@@ -5,7 +5,8 @@
 //  Created by Louis Melone on 2/19/25.
 //
 
-struct LightningNode: Codable {
+struct LightningNode: Codable, Identifiable {
+    var id: String { publicKey }
     let publicKey: String
     let alias: String
     let channels: Int
