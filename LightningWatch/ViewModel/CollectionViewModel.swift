@@ -1,5 +1,5 @@
 //
-//  LightningWatchViewModel.swift
+//  CollectionViewModel.swift
 //  LightningWatch
 //
 //  Created by Louis Melone on 2/19/25.
@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class LightningViewModel: ObservableObject {
+class CollectionViewModel: ObservableObject {
     @MainActor @Published var nodes: [LightningNode] = []
     var updatedDatetime: Date?
     

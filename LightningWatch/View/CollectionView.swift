@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct LightningView: View {
-    @ObservedObject var viewModel: LightningViewModel
+struct CollectionView: View {
+    @ObservedObject var viewModel: CollectionViewModel
     
     var body: some View {
         List {
             ForEach(viewModel.nodes) { node in
-                Text(String(node.capacity))
+                NodeView(node: node)
             }
         }
         .padding()
@@ -27,5 +27,5 @@ struct LightningView: View {
 }
 
 #Preview {
-    LightningView(viewModel: LightningViewModel())
+    CollectionView(viewModel: CollectionViewModel())
 }
