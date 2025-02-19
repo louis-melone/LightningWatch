@@ -8,8 +8,9 @@
 import Combine
 
 class LightningViewModel: ObservableObject {
-    @Published var nodes: [LightningNode] = []
+    @MainActor @Published var nodes: [LightningNode] = []
     
+    @MainActor
     func fetchNodes() async {
         // TODO: Error Screens
         let lightningNodes =  try! await ContentFetchManager.fetchLightningNodes()
