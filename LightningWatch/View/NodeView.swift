@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct NodeView: View {
-    let node: LightningNode
+    let viewModel: NodeViewModel
     
     var body: some View {
-        Text(node.alias)
+        Text(viewModel.node.alias)
+            .font(.headline)
     }
 }

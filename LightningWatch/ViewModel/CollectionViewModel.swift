@@ -9,16 +9,16 @@ import Combine
 import Foundation
 
 class CollectionViewModel: ObservableObject {
-    @MainActor @Published var nodes: [LightningNode] = []
+    @MainActor @Published var nodeViewModels: [NodeViewModel] = []
     var updatedDatetime: Date?
     
     @MainActor
     func fetchNodes() async {
         let currentDatetime = Date()
-        if let updatedDatetime, currentDatetime.timeIntervalSince(updatedDatetime) < 10 { return }
+        if let updatedDatetime, currentDatetime.timeIntervalSince(updatedDatetime) < 1 { return }
         // TODO: Error Screens
         let lightningNodes =  try! await ContentFetchManager.fetchLightningNodes()
-        nodes = lightningNodes
+        nodeViewModels = lightningNodes.map { NodeViewModel(node: $0) }
         updatedDatetime = currentDatetime
     }
 }

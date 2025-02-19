@@ -12,8 +12,8 @@ struct CollectionView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.nodes) { node in
-                NodeView(node: node)
+            ForEach(viewModel.nodeViewModels) { nodeViewModel in
+                NodeView(viewModel: nodeViewModel)
             }
         }
         .padding()
