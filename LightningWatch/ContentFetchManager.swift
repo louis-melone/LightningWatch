@@ -10,6 +10,7 @@ import Foundation
 struct ContentFetchManager {
     static let endpoint = "https://mempool.space/api/v1/lightning/nodes/rankings/connectivity"
     static let decoder = JSONDecoder()
+    // TODO: can create an instance and configure it how we want it, limit timeout time if testing retry logic - come back since not a requirement
     static let urlSession = URLSession.shared
     
     static func fetchLightningNodes() async throws -> [LightningNode] {
