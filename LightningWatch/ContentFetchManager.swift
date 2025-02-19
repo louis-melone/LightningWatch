@@ -13,31 +13,50 @@ struct ContentFetchManager {
     static let urlSession = URLSession.shared
     
     static func fetchLightningNodes() async throws -> [LightningNode] {
-        guard let url = URL(string: ContentFetchManager.endpoint) else {
+        guard let url = URL(string: Self.endpoint) else {
             throw ContentFetchError.invalidUrl
         }
         do {
             let (data, response) = try await urlSession.data(from: url)
-            // TODO: evaluate HTTP response for errors
-            let lightningNodes = try decoder.decode([LightningNode].self, from: data)
-            print("DEBUG: \(lightningNodes.count)")
-            return lightningNodes
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw ContentFetchError.unknown(URLError(.badServerResponse))
+            }
+
+            switch httpResponse.statusCode {
+            case 200...299:
+                return try decoder.decode([LightningNode].self, from: data)
+            case 404:
+                throw ContentFetchError.resourceNotFound
+            case 500...599:
+                throw ContentFetchError.serverError(httpResponse.statusCode)
+            default:
+                throw ContentFetchError.unknownHttpError(httpResponse.statusCode)
+            }
         } catch let error as URLError {
             switch error.code {
             case .notConnectedToInternet:
                 throw ContentFetchError.noInternet
+            case .timedOut:
+                throw ContentFetchError.timeout
             default:
                 throw ContentFetchError.unknown(error)
             }
         } catch {
-            print("DEBUG: \(error)")
             throw error
         }
     }
     
+    /// Choosing to limit error cases to 404 not found, no internet connection, timeout (slow connection) or server error
+    /// other errors like unauthorized can be implmented if the app ever gets auth, for example
     enum ContentFetchError: Error {
         case invalidUrl
         case noInternet
+        case resourceNotFound
+        // TODO: can add optimization to retry on a timeout
+        case timeout
+        case serverError(Int)
+        case unknownHttpError(Int)
         case unknown(URLError)
     }
 }
