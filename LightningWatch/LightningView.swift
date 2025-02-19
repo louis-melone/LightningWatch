@@ -13,11 +13,14 @@ struct LightningView: View {
     var body: some View {
         List {
             ForEach(viewModel.nodes) { node in
-                Text(node.alias)
+                Text(String(node.capacity))
             }
         }
         .padding()
         .task {
+            try? await viewModel.fetchNodes()
+        }
+        .refreshable {
             try? await viewModel.fetchNodes()
         }
     }
