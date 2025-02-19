@@ -12,13 +12,16 @@ struct ContentFetchManager {
     static let decoder = JSONDecoder()
     static let urlSession = URLSession.shared
     
-    static func fetchLightningNodes() async throws -> Data? {
+    static func fetchLightningNodes() async throws -> [LightningNode] {
         guard let url = URL(string: ContentFetchManager.endpoint) else {
             throw ContentFetchError.invalidUrl
         }
         do {
             let (data, response) = try await urlSession.data(from: url)
-            return data
+            // TODO: evaluate HTTP response for errors
+            let lightningNodes = try decoder.decode([LightningNode].self, from: data)
+            print("DEBUG: \(lightningNodes.count)")
+            return lightningNodes
         } catch let error as URLError {
             switch error.code {
             case .notConnectedToInternet:
@@ -26,6 +29,9 @@ struct ContentFetchManager {
             default:
                 throw ContentFetchError.unknown(error)
             }
+        } catch {
+            print("DEBUG: \(error)")
+            throw error
         }
     }
     
