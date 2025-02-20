@@ -27,7 +27,6 @@ class CollectionViewModel: ObservableObject {
     }
     
     func sort(by sortParameter: SortParameter) {
-        guard sortParameter != self.sortParameter else { return }
         self.sortParameter = sortParameter
         switch sortParameter {
         case .capacity:
