@@ -8,6 +8,7 @@
 import Foundation
 
 struct LocationSheetViewModel {
+    let alias: String
     let city: LocalizedName?
     let country: LocalizedName?
     let publicKey: String

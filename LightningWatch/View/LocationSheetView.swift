@@ -9,20 +9,34 @@ import SwiftUI
 
 struct LocationSheetView: View {
     let viewModel: LocationSheetViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        List {
-            Section {
-                locationSectionView
+        NavigationView {
+            List {
+                Section {
+                    locationSectionView
+                }
+                Section {
+                    firstSeenSectionView
+                }
+                Section {
+                    publicKeySectionView
+                }
             }
-            Section {
-                firstSeenSectionView
-            }
-            Section {
-                publicKeySectionView
+            .listStyle(.insetGrouped)
+            .navigationTitle(viewModel.alias)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: { dismiss() }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.gray)
+                    }
+                }
             }
         }
-        .listStyle(.insetGrouped)
     }
     
     var publicKeySectionView: some View {
@@ -41,6 +55,8 @@ struct LocationSheetView: View {
                             .foregroundStyle(.gray)
                     }
                 }
+                .foregroundColor(.gray)
+
         }
     }
     
@@ -49,6 +65,7 @@ struct LocationSheetView: View {
             Text("Location")
             Spacer()
             Text(viewModel.locationText)
+                .foregroundColor(.gray)
         }
     }
     
@@ -57,6 +74,7 @@ struct LocationSheetView: View {
             Text("First Seen")
             Spacer()
             Text(viewModel.firstSeenFormatted)
+                .foregroundColor(.gray)
         }
     }
 }

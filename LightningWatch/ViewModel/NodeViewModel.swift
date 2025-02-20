@@ -15,6 +15,7 @@ struct NodeViewModel: Identifiable {
     init(node: LightningNode) {
         self.node = node
         self.locationSheetViewModel = LocationSheetViewModel(
+            alias: node.alias,
             city: node.city,
             country: node.country,
             publicKey: node.publicKey,
