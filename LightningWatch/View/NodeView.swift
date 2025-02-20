@@ -10,6 +10,7 @@ import SwiftUI
 struct NodeView: View {
     let viewModel: NodeViewModel
     @State var showCapacity = true
+    @State var showSheet = false
     
     var body: some View {
         HStack {
@@ -21,14 +22,16 @@ struct NodeView: View {
             Spacer()
             statisticsView
         }
+        .sheet(isPresented: $showSheet) {
+            LocationSheetView(viewModel: viewModel.locationSheetViewModel)
+                .presentationDetents([.medium])
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            showSheet = true
+        }
     }
 
-    var firstSeenView: some View {
-        Text("\(viewModel.firstSeenFormatted)")
-            .font(.footnote)
-            .foregroundColor(.gray)
-    }
-    
     var footerView: some View {
         HStack {
             TimelineView(.everyMinute) { _ in
