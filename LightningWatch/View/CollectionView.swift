@@ -17,6 +17,7 @@ struct CollectionView: View {
             }
         }
         .padding()
+        .listStyle(.plain)
         .task {
             try? await viewModel.fetchNodes()
         }
