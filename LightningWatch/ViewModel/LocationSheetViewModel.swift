@@ -17,12 +17,24 @@ struct LocationSheetViewModel {
         formattedDate(from: firstSeen)
     }
     
-    var cityName: String? {
+    var locationText: String {
+        if let cityName, let countryName {
+            return "\(cityName), \(countryName)"
+        } else if let countryName {
+            return countryName
+        } else if let cityName {
+            return cityName
+        } else {
+            return "Unknown"
+        }
+    }
+    
+    private var cityName: String? {
         guard let city else { return nil }
         return city.ptBR ?? city.en
     }
     
-    var countryName: String? {
+    private var countryName: String? {
         guard let country else { return nil }
         return country.ptBR ?? country.en
     }
