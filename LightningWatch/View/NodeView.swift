@@ -11,7 +11,13 @@ struct NodeView: View {
     let viewModel: NodeViewModel
     
     var body: some View {
-        Text(viewModel.node.alias)
-            .font(.headline)
+        VStack(alignment: .leading) {
+            Text(viewModel.node.alias)
+                .font(.headline)
+            Text(viewModel.firstSeenFormatted)
+            TimelineView(.everyMinute) { _ in
+                Text(viewModel.lastUpdatedFormatted)
+            }
+        }
     }
 }

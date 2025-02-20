@@ -18,4 +18,12 @@ struct NodeViewModel: Identifiable {
         guard let country = node.country else { return nil }
         return country.ptBR ?? country.en
     }
+    
+    var firstSeenFormatted: String {
+        node.firstSeen.formattedDate
+    }
+    
+    var lastUpdatedFormatted: String {
+        node.updatedAt.timeAgo
+    }
 }
