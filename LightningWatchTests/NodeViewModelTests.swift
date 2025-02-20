@@ -36,7 +36,6 @@ struct NodeViewModelTests {
 
         #expect(viewModel.cityName == "New York")
     }
-
     
     @Test func testCountryPt() {
         let localizedCountry = LocalizedName(
@@ -64,6 +63,23 @@ struct NodeViewModelTests {
         let viewModel = NodeViewModel(node: node)
 
         #expect(viewModel.countryName == "Brasil")
+    }
+    
+    @Test func testSatsToBtc() {
+        let node = LightningNode(
+            publicKey: "",
+            alias: "",
+            channels: 0,
+            capacity: 123_456_789,
+            firstSeen: 0,
+            updatedAt: 0,
+            city: nil,
+            country: nil
+        )
+
+        let viewModel = NodeViewModel(node: node)
+
+        #expect(viewModel.capacityBtc == "1.23456789 BTC")
     }
     
     @Test func testLastUpdatedFormatted() {

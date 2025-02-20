@@ -21,6 +21,10 @@ struct NodeViewModel: Identifiable {
         return country.ptBR ?? country.en
     }
     
+    var capacityBtc: String {
+        String(format: "%.8f BTC", node.capacity.satsToBtc)
+    }
+    
     var firstSeenFormatted: String {
         formattedDate(from: node.firstSeen)
     }
@@ -43,3 +47,4 @@ struct NodeViewModel: Identifiable {
         return date.formatted(date: .abbreviated, time: .omitted)
     }
 }
+
