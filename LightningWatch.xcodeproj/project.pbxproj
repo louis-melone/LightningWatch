@@ -33,7 +33,8 @@
 		BDB903AD2D66B8B90057810C /* Exceptions for "LightningWatch" folder in "LightningWatchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				LightningNode.swift,
+				Model/LightningNode.swift,
+				Model/LocalizedName.swift,
 				ViewModel/NodeViewModel.swift,
 			);
 			target = BDC11DD52D6677E100F51343 /* LightningWatchTests */;
