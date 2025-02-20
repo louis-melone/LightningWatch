@@ -11,7 +11,18 @@ struct LocationSheetView: View {
     let viewModel: LocationSheetViewModel
     
     var body: some View {
-        publicKeySectionView
+        List {
+            Section {
+                locationSectionView
+            }
+            Section {
+                firstSeenSectionView
+            }
+            Section {
+                publicKeySectionView
+            }
+        }
+        .listStyle(.insetGrouped)
     }
     
     var publicKeySectionView: some View {
@@ -30,7 +41,22 @@ struct LocationSheetView: View {
                             .foregroundStyle(.gray)
                     }
                 }
-
+        }
+    }
+    
+    var locationSectionView: some View {
+        HStack {
+            Text("Location")
+            Spacer()
+            Text(viewModel.locationText)
+        }
+    }
+    
+    var firstSeenSectionView: some View {
+        HStack {
+            Text("First Seen")
+            Spacer()
+            Text(viewModel.firstSeenFormatted)
         }
     }
 }
