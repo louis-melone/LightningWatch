@@ -36,10 +36,16 @@ struct CollectionView: View {
                 .foregroundColor(.gray)
             Text("Capacity (₿)")
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundColor(viewModel.capacityTextColor)
+                .onTapGesture {
+                    viewModel.sort(by: .capacity)
+                }
             Text("# Channels")
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundColor(viewModel.channelsTextColor)
+                .onTapGesture {
+                    viewModel.sort(by: .channels)
+                }
         }
     }
     

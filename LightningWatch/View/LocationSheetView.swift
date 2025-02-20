@@ -56,7 +56,6 @@ struct LocationSheetView: View {
                     }
                 }
                 .foregroundColor(.gray)
-
         }
     }
     

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NodeView: View {
     let viewModel: NodeViewModel
-    @State var showCapacity = true
     @State var showSheet = false
     
     var body: some View {
@@ -35,13 +34,10 @@ struct NodeView: View {
     }
 
     var footerView: some View {
-        HStack {
-            TimelineView(.everyMinute) { _ in
-                Text("\(viewModel.lastUpdatedFormatted)")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-
-            }
+        TimelineView(.everyMinute) { _ in
+            Text(viewModel.lastUpdatedFormatted)
+                .font(.footnote)
+                .foregroundColor(.gray)
         }
     }
 }
