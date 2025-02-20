@@ -13,14 +13,16 @@ struct NodeView: View {
     @State var showSheet = false
     
     var body: some View {
-        HStack {
+        GridRow(alignment: .center) {
             VStack(alignment: .leading) {
                 Text(viewModel.node.alias)
-                    .font(.headline)
+                    .font(.subheadline)
                 footerView
             }
-            Spacer()
-            statisticsView
+            Text(viewModel.capacityBtc)
+                .font(.subheadline)
+            Text(viewModel.channels)
+                .font(.subheadline)
         }
         .sheet(isPresented: $showSheet) {
             LocationSheetView(viewModel: viewModel.locationSheetViewModel)
@@ -41,15 +43,5 @@ struct NodeView: View {
 
             }
         }
-    }
-    
-    var statisticsView: some View {
-        Text(showCapacity ? viewModel.capacityBtc : viewModel.channels)
-            .font(.headline)
-            .onTapGesture {
-                withAnimation {
-                    showCapacity.toggle()
-                }
-            }
     }
 }

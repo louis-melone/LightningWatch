@@ -24,11 +24,11 @@ struct NodeViewModel: Identifiable {
     }
     
     var capacityBtc: String {
-        String(format: "₿ %.3f", node.capacity.satsToBtc)
+        String(format: "%.3f", node.capacity.satsToBtc)
     }
     
     var channels: String {
-        "\(node.channels) ch"
+        String(node.channels)
     }
 
     var lastUpdatedFormatted: String {
