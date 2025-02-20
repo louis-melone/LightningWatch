@@ -16,9 +16,9 @@ struct NodeViewModel: Identifiable {
         self.node = node
         self.locationSheetViewModel = LocationSheetViewModel(
             alias: node.alias,
-            city: node.city,
-            country: node.country,
             publicKey: node.publicKey,
+            country: node.country,
+            city: node.city,
             firstSeen: node.firstSeen
         )
     }
@@ -42,7 +42,5 @@ struct NodeViewModel: Identifiable {
         formatter.unitsStyle = .abbreviated
         return formatter.localizedString(for: date, relativeTo: Date())
     }
-    
-
 }
 

@@ -36,6 +36,7 @@
 				"Extensions/Int+SatsToBtc.swift",
 				Model/LightningNode.swift,
 				Model/LocalizedName.swift,
+				ViewModel/LocationSheetViewModel.swift,
 				ViewModel/NodeViewModel.swift,
 			);
 			target = BDC11DD52D6677E100F51343 /* LightningWatchTests */;

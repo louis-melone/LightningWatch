@@ -9,10 +9,18 @@ import Foundation
 
 struct LocationSheetViewModel {
     let alias: String
-    let city: LocalizedName?
-    let country: LocalizedName?
     let publicKey: String
-    let firstSeen: Int
+    private let country: LocalizedName?
+    private let city: LocalizedName?
+    private let firstSeen: Int
+    
+    init(alias: String, publicKey: String, country: LocalizedName?, city: LocalizedName?, firstSeen: Int) {
+        self.alias = alias
+        self.publicKey = publicKey
+        self.country = country
+        self.city = city
+        self.firstSeen = firstSeen
+    }
     
     var firstSeenFormatted: String {
         formattedDate(from: firstSeen)
