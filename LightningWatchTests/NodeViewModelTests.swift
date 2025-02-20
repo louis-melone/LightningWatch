@@ -9,6 +9,63 @@ import Foundation
 import Testing
 
 struct NodeViewModelTests {
+    @Test func testCityEn() {
+        let localizedCity = LocalizedName(
+            de: nil,
+            en: "New York",
+            es: nil,
+            fr: nil,
+            ja: nil,
+            ptBR: nil,
+            ru: nil,
+            zhCN: nil
+        )
+        
+        let node = LightningNode(
+            publicKey: "",
+            alias: "",
+            channels: 0,
+            capacity: 0,
+            firstSeen: 0,
+            updatedAt: 0,
+            city: localizedCity,
+            country: nil
+        )
+
+        let viewModel = NodeViewModel(node: node)
+
+        #expect(viewModel.cityName == "New York")
+    }
+
+    
+    @Test func testCountryPt() {
+        let localizedCountry = LocalizedName(
+            de: nil,
+            en: "Brazil",
+            es: nil,
+            fr: nil,
+            ja: nil,
+            ptBR: "Brasil",
+            ru: nil,
+            zhCN: nil
+        )
+        
+        let node = LightningNode(
+            publicKey: "",
+            alias: "",
+            channels: 0,
+            capacity: 0,
+            firstSeen: 0,
+            updatedAt: 0,
+            city: nil,
+            country: localizedCountry
+        )
+
+        let viewModel = NodeViewModel(node: node)
+
+        #expect(viewModel.countryName == "Brasil")
+    }
+    
     @Test func testLastUpdatedFormatted() {
         let oneHourAgoUnix = Int(Date().timeIntervalSince1970) - 3600
         
