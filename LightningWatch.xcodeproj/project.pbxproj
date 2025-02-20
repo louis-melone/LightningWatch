@@ -29,9 +29,25 @@
 		BDC11DE02D6677E100F51343 /* LightningWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightningWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BDB903AD2D66B8B90057810C /* Exceptions for "LightningWatch" folder in "LightningWatchTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/Int+SatsToBtc.swift",
+				Model/LightningNode.swift,
+				Model/LocalizedName.swift,
+				ViewModel/NodeViewModel.swift,
+			);
+			target = BDC11DD52D6677E100F51343 /* LightningWatchTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BDC11DC72D6677E000F51343 /* LightningWatch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BDB903AD2D66B8B90057810C /* Exceptions for "LightningWatch" folder in "LightningWatchTests" target */,
+			);
 			path = LightningWatch;
 			sourceTree = "<group>";
 		};
