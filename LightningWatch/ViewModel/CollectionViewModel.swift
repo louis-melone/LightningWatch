@@ -15,6 +15,11 @@ class CollectionViewModel: ObservableObject {
     @Published var sortParameter: SortParameter = .channels
     @Published var loadableViewState: LoadableViewState = .loaded
     var updatedDatetime: Date?
+    let loader: LightningLoader
+    
+    init(loader: LightningLoader) {
+        self.loader = loader
+    }
     
     var capacityTextColor: Color {
         if sortParameter == .capacity {
@@ -37,7 +42,7 @@ class CollectionViewModel: ObservableObject {
             loadableViewState = .loading
         }
         do {
-            let lightningNodes =  try await Loader.fetchLightningNodes()
+            let lightningNodes = try await loader.fetchLightningNodes()
             updatedDatetime = currentDatetime
             nodeViewModels = lightningNodes.map { NodeViewModel(node: $0) }
             sort(by: sortParameter)
@@ -61,7 +66,7 @@ class CollectionViewModel: ObservableObject {
         if let loaderError = error as? LoaderError {
             switch loaderError {
             case .noInternet:
-                loadableViewState = .error(.resourceNotFound)
+                loadableViewState = nodeViewModels.isEmpty ? .error(loaderError) : .loaded
             default:
                 loadableViewState = .error(loaderError)
             }

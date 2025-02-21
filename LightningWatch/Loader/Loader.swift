@@ -8,12 +8,12 @@
 import Foundation
 
 struct Loader: LightningLoader {
-    static let endpoint = "https://mempool.space/api/v1/lightning/nodes/rankings/connectivity"
-    static let decoder = JSONDecoder()
-    static let urlSession = URLSession.shared
+    let endpoint = "https://mempool.space/api/v1/lightning/nodes/rankings/connectivity"
+    let decoder = JSONDecoder()
+    let urlSession = URLSession.shared
     
-    static func fetchLightningNodes() async throws -> [LightningNode] {
-        guard let url = URL(string: Self.endpoint) else {
+    func fetchLightningNodes() async throws -> [LightningNode] {
+        guard let url = URL(string: self.endpoint) else {
             throw LoaderError.invalidUrl
         }
         do {
@@ -49,5 +49,5 @@ struct Loader: LightningLoader {
 }
 
 protocol LightningLoader {
-    static func fetchLightningNodes() async throws -> [LightningNode]
+    func fetchLightningNodes() async throws -> [LightningNode]
 }

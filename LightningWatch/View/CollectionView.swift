@@ -70,7 +70,3 @@ extension CollectionView: LoadableView {
         viewModel.fetchNodes
     }
 }
-
-#Preview {
-    CollectionView(viewModel: CollectionViewModel())
-}
