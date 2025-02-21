@@ -9,26 +9,28 @@ import Foundation
 
 struct NodeViewModel: Identifiable {
     let node: LightningNode
+    let locationSheetViewModel: LocationSheetViewModel
     var id: String { node.id }
     
-    var cityName: String? {
-        guard let city = node.city else { return nil }
-        return city.ptBR ?? city.en
-    }
-    
-    var countryName: String? {
-        guard let country = node.country else { return nil }
-        return country.ptBR ?? country.en
+    init(node: LightningNode) {
+        self.node = node
+        self.locationSheetViewModel = LocationSheetViewModel(
+            alias: node.alias,
+            publicKey: node.publicKey,
+            country: node.country,
+            city: node.city,
+            firstSeen: node.firstSeen
+        )
     }
     
     var capacityBtc: String {
-        String(format: "%.8f BTC", node.capacity.satsToBtc)
+        String(format: "%.3f", node.capacity.satsToBtc)
     }
     
-    var firstSeenFormatted: String {
-        formattedDate(from: node.firstSeen)
+    var channels: String {
+        String(node.channels)
     }
-    
+
     var lastUpdatedFormatted: String {
         timeAgo(from: node.updatedAt)
     }
@@ -39,12 +41,6 @@ struct NodeViewModel: Identifiable {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .abbreviated
         return formatter.localizedString(for: date, relativeTo: Date())
-    }
-    
-    // Converts Unix Time to formatted date ex. "Jan 1, 2025"
-    private func formattedDate(from unixTimestamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))
-        return date.formatted(date: .abbreviated, time: .omitted)
     }
 }
 

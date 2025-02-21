@@ -9,15 +9,35 @@ import SwiftUI
 
 struct NodeView: View {
     let viewModel: NodeViewModel
+    @State var showSheet = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(viewModel.node.alias)
-                .font(.headline)
-            Text(viewModel.firstSeenFormatted)
-            TimelineView(.everyMinute) { _ in
-                Text(viewModel.lastUpdatedFormatted)
+        GridRow(alignment: .center) {
+            VStack(alignment: .leading) {
+                Text(viewModel.node.alias)
+                    .font(.subheadline)
+                footerView
             }
+            Text(viewModel.capacityBtc)
+                .font(.subheadline)
+            Text(viewModel.channels)
+                .font(.subheadline)
+        }
+        .sheet(isPresented: $showSheet) {
+            LocationSheetView(viewModel: viewModel.locationSheetViewModel)
+                .presentationDetents([.medium])
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            showSheet = true
+        }
+    }
+
+    var footerView: some View {
+        TimelineView(.everyMinute) { _ in
+            Text(viewModel.lastUpdatedFormatted)
+                .font(.footnote)
+                .foregroundColor(.gray)
         }
     }
 }
