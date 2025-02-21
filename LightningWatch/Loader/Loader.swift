@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Loader {
+struct Loader: LightningLoader {
     static let endpoint = "https://mempool.space/api/v1/lightning/nodes/rankings/connectivity"
     static let decoder = JSONDecoder()
     static let urlSession = URLSession.shared
@@ -46,4 +46,8 @@ struct Loader {
             throw LoaderError.unknown(error.localizedDescription)
         }
     }
+}
+
+protocol LightningLoader {
+    static func fetchLightningNodes() async throws -> [LightningNode]
 }
