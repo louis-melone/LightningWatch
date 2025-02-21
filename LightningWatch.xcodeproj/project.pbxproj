@@ -33,8 +33,9 @@
 		BDB903AD2D66B8B90057810C /* Exceptions for "LightningWatch" folder in "LightningWatchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ContentFetchManager.swift,
 				"Extensions/Int+SatsToBtc.swift",
+				Loader/LoadableViewState.swift,
+				Loader/Loader.swift,
 				Model/LightningNode.swift,
 				Model/LocalizedName.swift,
 				ViewModel/CollectionViewModel.swift,

@@ -10,9 +10,16 @@ import SwiftUI
 struct CollectionView: View {
     @ObservedObject var viewModel: CollectionViewModel
     
+    var body: some View {
+        mainView
+        .task {
+            await viewModel.fetchNodes()
+        }
+    }
+    
     // For 100 elements Grid seems to be working with no performance hits
     // https://developer.apple.com/documentation/swiftui/lazyvgrid
-    var body: some View {
+    var contentView: some View {
         ScrollView {
             Grid(alignment: .leadingLastTextBaseline) {
                 gridHeaderView
@@ -21,11 +28,8 @@ struct CollectionView: View {
             }
         }
         .padding()
-        .task {
-            try? await viewModel.fetchNodes()
-        }
         .refreshable {
-            try? await viewModel.fetchNodes()
+            await viewModel.fetchNodes()
         }
     }
     
@@ -57,6 +61,12 @@ struct CollectionView: View {
     }
 }
 
-#Preview {
-    CollectionView(viewModel: CollectionViewModel())
+extension CollectionView: LoadableView {
+    var loadableViewState: LoadableViewState {
+        viewModel.loadableViewState
+    }
+    
+    var retryButtonAction: () async -> Void {
+        viewModel.fetchNodes
+    }
 }

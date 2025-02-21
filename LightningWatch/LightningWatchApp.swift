@@ -11,7 +11,7 @@ import SwiftUI
 struct LightningWatchApp: App {
     var body: some Scene {
         WindowGroup {
-            CollectionView(viewModel: CollectionViewModel())
+            CollectionView(viewModel: CollectionViewModel(loader: Loader()))
         }
     }
 }
