@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  LoadableViewState.swift
 //  LightningWatch
 //
 //  Created by Louis Melone on 2/19/25.
