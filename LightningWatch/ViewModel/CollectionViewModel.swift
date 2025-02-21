@@ -14,8 +14,8 @@ class CollectionViewModel: ObservableObject {
     @Published var nodeViewModels: [NodeViewModel] = []
     @Published var sortParameter: SortParameter = .channels
     @Published var loadableViewState: LoadableViewState = .loaded
-    var updatedDatetime: Date?
-    let loader: LightningLoader
+    private var updatedDatetime: Date?
+    private let loader: LightningLoader
     
     init(loader: LightningLoader) {
         self.loader = loader
@@ -35,12 +35,17 @@ class CollectionViewModel: ObservableObject {
         return Color.gray
     }
     
+    /// Fetches Lightning nodes async with throttling, maps results to view models,
+    /// sorts them, and updates the loadable view state accordingly
     func fetchNodes() async {
         let currentDatetime = Date()
+        
         if let updatedDatetime, currentDatetime.timeIntervalSince(updatedDatetime) < 10 { return }
+        
         if nodeViewModels.isEmpty {
             loadableViewState = .loading
         }
+        
         do {
             let lightningNodes = try await loader.fetchLightningNodes()
             updatedDatetime = currentDatetime
@@ -51,7 +56,7 @@ class CollectionViewModel: ObservableObject {
             handleError(error: error)
         }
     }
-    
+
     func sort(by sortParameter: SortParameter) {
         self.sortParameter = sortParameter
         switch sortParameter {
@@ -62,6 +67,8 @@ class CollectionViewModel: ObservableObject {
         }
     }
     
+    /// Handles loadable state given some error.
+    /// Preserves the loaded state if there's no internet and nodes exist
     private func handleError(error: Error) {
         if let loaderError = error as? LoaderError {
             switch loaderError {

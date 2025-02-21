@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Loader: LightningLoader {
+class Loader: LightningLoader {
     let endpoint = "https://mempool.space/api/v1/lightning/nodes/rankings/connectivity"
     let decoder = JSONDecoder()
     let urlSession = URLSession.shared

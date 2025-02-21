@@ -10,6 +10,7 @@ import Testing
 struct CollectionViewModelTests {
     @MainActor
     @Test func testSortByCapacity() {
+        // Setup
         let nodes = [
             LightningNode(publicKey: "", alias: "", channels: 0, capacity: 1, firstSeen: 0, updatedAt: 0, city: nil, country: nil),
             LightningNode(publicKey: "", alias: "", channels: 0, capacity: 3, firstSeen: 0, updatedAt: 0, city: nil, country: nil),
@@ -20,16 +21,16 @@ struct CollectionViewModelTests {
         let viewModel = CollectionViewModel(loader: MockLightningLoader())
         viewModel.nodeViewModels = nodeViewModels
         
-        // Test that the capacity color is unselected
+        // Expect unselected color before sorting
         #expect(viewModel.capacityTextColor == .gray)
         
-        // perform operation
+        // Perform
         viewModel.sort(by: .capacity)
         
-        // Test that the capacity color has been selected
+        // Expect selected color after sorting
         #expect(viewModel.capacityTextColor == .black)
         
-        // Test that the array is sorted by capacity
+        // Expect nodes to be sorted by capactiy
         #expect(viewModel.nodeViewModels[0].node.capacity == 3)
         #expect(viewModel.nodeViewModels[1].node.capacity == 2)
         #expect(viewModel.nodeViewModels[2].node.capacity == 1)
@@ -37,6 +38,7 @@ struct CollectionViewModelTests {
     
     @MainActor
     @Test func testHandleErrorFull() async {
+        // Setup
         let nodes = [
             LightningNode(publicKey: "", alias: "", channels: 0, capacity: 0, firstSeen: 0, updatedAt: 0, city: nil, country: nil),
         ]
@@ -45,8 +47,10 @@ struct CollectionViewModelTests {
         let viewModel = CollectionViewModel(loader: MockLightningLoader())
         viewModel.nodeViewModels = nodeViewModels
         
+        // Perform
         await viewModel.fetchNodes()
         
+        // Expect loaded state since data was previously loaded despite connection error
         var expect = false
         switch viewModel.loadableViewState {
         case .loaded:
@@ -60,10 +64,13 @@ struct CollectionViewModelTests {
     
     @MainActor
     @Test func testHandleErrorEmpty() async {
+        // Setup
         let viewModel = CollectionViewModel(loader: MockLightningLoader())
         
+        // Perform
         await viewModel.fetchNodes()
         
+        // Expect error state since no data is present with connection error
         var expect = false
         switch viewModel.loadableViewState {
         case .error:

@@ -35,7 +35,7 @@ struct NodeViewModel: Identifiable {
         timeAgo(from: node.updatedAt)
     }
     
-    // Converts Unix Time to time ago string ex. "5m ago"
+    /// Converts Unix Time to "time ago" string ex. "5m ago"
     private func timeAgo(from unixTimestamp: Int) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))
         let formatter = RelativeDateTimeFormatter()

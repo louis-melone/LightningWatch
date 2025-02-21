@@ -6,7 +6,7 @@
 //
 
 extension Int {
-    // 1 Bitcoin = 100,000,000 sats
+    /// 1 Bitcoin = 100,000,000 sats
     var satsToBtc: Double {
         Double(self) / 100_000_000.0
     }

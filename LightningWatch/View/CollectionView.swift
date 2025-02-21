@@ -17,8 +17,8 @@ struct CollectionView: View {
         }
     }
     
-    // For 100 elements Grid seems to be working with no performance hits
-    // https://developer.apple.com/documentation/swiftui/lazyvgrid
+    /// SwiftUI's Grid handles 100 elements efficiently with no noticeable lag.
+    /// https://developer.apple.com/documentation/swiftui/lazyvgrid
     var contentView: some View {
         ScrollView {
             Grid(alignment: .leadingLastTextBaseline) {
@@ -35,7 +35,7 @@ struct CollectionView: View {
     
     var gridHeaderView: some View {
         GridRow {
-            Text("Node Alias / Updated Ago")
+            Text("Node Alias / Last Updated")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             Text("Capacity (₿)")

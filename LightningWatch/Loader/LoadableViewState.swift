@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// Choosing to limit error cases to 404 not found, no internet connection, timeout (slow connection) or server error
-/// other errors like unauthorized can be implmented if the app ever gets auth, for example
 enum LoaderError: Error {
     case invalidUrl
     case noInternet
