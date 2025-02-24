@@ -32,15 +32,16 @@ struct NodeViewModel: Identifiable {
     }
 
     var lastUpdatedFormatted: String {
-        timeAgo(from: node.updatedAt)
-    }
-    
-    /// Converts Unix Time to "time ago" string ex. "5m ago"
-    private func timeAgo(from unixTimestamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .abbreviated
-        return formatter.localizedString(for: date, relativeTo: Date())
+        node.updatedAt.unixTimeToTimeAgo
     }
 }
 
+extension NodeViewModel: Hashable {
+    static func == (lhs: NodeViewModel, rhs: NodeViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
