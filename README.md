@@ -58,14 +58,13 @@ __Trade Offs__
 
 - Portrait-mode only to avoid using a Geometry Reader to format the rows 
 
-__Future Features__
+__With More Times__
 
 - ContentPolling feature to automatically update data. 
-- ThemeCoordinator to style the list better. 
 - Network monitor to listen to changes in connection status. 
 - Filter by city / country 
-- Statistics above the grid (total capacity)
+- Statistics above the grid (eg. total capacity)
 
 ## What do you think is the weakest part of your project?
 
-Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy would enhance maintainability and UX.
+Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy.
