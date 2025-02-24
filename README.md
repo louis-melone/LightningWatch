@@ -1,5 +1,5 @@
 # LightningWatch
-App For Monitoring Active Lightning Network Nodes
+iOS App for monitoring the 100 most well-connected nodes in the Lightning Network. 
 
 <img src="https://github.com/user-attachments/assets/07886b45-29e8-4fa1-976b-56ceb155cbb6" alt="simulator_screenshot" style="width:25%;">
 

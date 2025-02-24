@@ -45,7 +45,7 @@ struct CollectionViewModelTests {
         ]
         
         let nodeViewModels = nodes.map { NodeViewModel(node: $0) }
-        let viewModel = CollectionViewModel(loader: MockLightningLoader())
+        let viewModel = CollectionViewModel(loader: MockLightningLoader(loaderError: .noInternet))
         viewModel.nodeViewModels = nodeViewModels
         
         // Perform
@@ -65,7 +65,7 @@ struct CollectionViewModelTests {
     
     @Test func testHandleErrorEmpty() async {
         // Setup
-        let viewModel = CollectionViewModel(loader: MockLightningLoader())
+        let viewModel = CollectionViewModel(loader: MockLightningLoader(loaderError: .noInternet))
         
         // Perform
         await viewModel.fetchNodes()

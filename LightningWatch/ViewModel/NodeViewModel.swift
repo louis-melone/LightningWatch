@@ -9,11 +9,11 @@ import Combine
 import Foundation
 
 class NodeViewModel: ObservableObject, Identifiable {
+    @Published var rank: Int?
+    @Published var showSheet = false
     let node: LightningNode
     let locationSheetViewModel: LocationSheetViewModel
     var id: String { node.id }
-    @Published var rank: Int?
-    @Published var showSheet = false
     
     init(node: LightningNode) {
         self.node = node
