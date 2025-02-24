@@ -30,10 +30,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BD153BD52D6B644100114BB7 /* Exceptions for "LightningWatchTests" folder in "LightningWatch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockLightningLoader.swift,
+			);
+			target = BDC11DC42D6677E000F51343 /* LightningWatch */;
+		};
 		BDB903AD2D66B8B90057810C /* Exceptions for "LightningWatch" folder in "LightningWatchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Extensions/Int+SatsToBtc.swift",
+				Extensions/Int.swift,
 				Loader/LoadableViewState.swift,
 				Loader/Loader.swift,
 				Model/LightningNode.swift,
@@ -57,12 +64,10 @@
 		};
 		BDC11DD92D6677E100F51343 /* LightningWatchTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BD153BD52D6B644100114BB7 /* Exceptions for "LightningWatchTests" folder in "LightningWatch" target */,
+			);
 			path = LightningWatchTests;
-			sourceTree = "<group>";
-		};
-		BDC11DE32D6677E100F51343 /* LightningWatchUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LightningWatchUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -97,7 +102,6 @@
 			children = (
 				BDC11DC72D6677E000F51343 /* LightningWatch */,
 				BDC11DD92D6677E100F51343 /* LightningWatchTests */,
-				BDC11DE32D6677E100F51343 /* LightningWatchUITests */,
 				BDC11DC62D6677E000F51343 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,9 +176,6 @@
 			);
 			dependencies = (
 				BDC11DE22D6677E100F51343 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BDC11DE32D6677E100F51343 /* LightningWatchUITests */,
 			);
 			name = LightningWatchUITests;
 			packageProductDependencies = (
@@ -422,10 +423,10 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -461,10 +462,10 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
