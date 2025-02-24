@@ -17,7 +17,6 @@ App For Monitoring Active Lightning Network Nodes
 
 ```sh 
 git clone https://github.com/louis-melone/LightningWatch
-cd LightningWatch
 ```
 
 Open LightningWallet.xcodeproj. Once the project loads, select the scheme/target LightningWallet. Click Run.
