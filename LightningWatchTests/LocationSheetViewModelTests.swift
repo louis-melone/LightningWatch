@@ -11,25 +11,13 @@ import Testing
 struct LocationSheetViewModelTests {
     @Test func testCityandCountry() {
         let localizedCountry = LocalizedName(
-            de: nil,
             en: "Brazil",
-            es: nil,
-            fr: nil,
-            ja: nil,
-            ptBR: "Brasil",
-            ru: nil,
-            zhCN: nil
+            ptBR: "Brasil"
         )
         
         let localizedCity = LocalizedName(
-            de: nil,
             en: "New York",
-            es: nil,
-            fr: nil,
-            ja: nil,
-            ptBR: nil,
-            ru: nil,
-            zhCN: nil
+            ptBR: nil
         )
         
         let node = LightningNode(
@@ -50,14 +38,8 @@ struct LocationSheetViewModelTests {
     
     @Test func testCityEn() {
         let localizedCity = LocalizedName(
-            de: nil,
             en: "New York",
-            es: nil,
-            fr: nil,
-            ja: nil,
-            ptBR: nil,
-            ru: nil,
-            zhCN: nil
+            ptBR: nil
         )
         
         let node = LightningNode(
@@ -78,14 +60,8 @@ struct LocationSheetViewModelTests {
     
     @Test func testCountryPt() {
         let localizedCountry = LocalizedName(
-            de: nil,
             en: "Brazil",
-            es: nil,
-            fr: nil,
-            ja: nil,
-            ptBR: "Brasil",
-            ru: nil,
-            zhCN: nil
+            ptBR: "Brasil"
         )
         
         let node = LightningNode(
