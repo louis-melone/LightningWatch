@@ -1,9 +1,9 @@
 # LightningWatch
 App For Monitoring Active Lightning Network Nodes
 
-<img src="https://github.com/user-attachments/assets/6f467207-0465-4414-a455-ad7184ef1ddb" alt="simulator_screenshot" style="width:25%;">
+<img src="https://github.com/user-attachments/assets/07886b45-29e8-4fa1-976b-56ceb155cbb6" alt="simulator_screenshot" style="width:25%;">
 
-<img src="https://github.com/user-attachments/assets/5b386903-e4c1-424e-8e1d-943b94cf8eb6" alt="simulator_screenshot" style="width:25%;">
+<img src="https://github.com/user-attachments/assets/9f2a2b16-12e4-46a2-8932-dd14be416e84" alt="simulator_screenshot" style="width:25%;">
 
 ## Build tools & versions used
 
