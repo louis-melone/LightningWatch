@@ -9,19 +9,28 @@ import SwiftUI
 
 struct NodeView: View {
     let viewModel: NodeViewModel
+    let rank: Int
     @State var showSheet = false
     
+    
     var body: some View {
-        GridRow(alignment: .center) {
+        HStack(spacing: 0) {
+            Text(String(rank))
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .frame(minWidth: 25, alignment: .leading)
             VStack(alignment: .leading) {
                 Text(viewModel.node.alias)
                     .font(.subheadline)
                 footerView
             }
+            .padding(.trailing, 8)
+            Spacer()
             Text(viewModel.capacityBtc)
                 .font(.subheadline)
             Text(viewModel.channels)
                 .font(.subheadline)
+                .frame(width: UIScreen.main.bounds.width / 4, alignment: .trailing)
         }
         .sheet(isPresented: $showSheet) {
             LocationSheetView(viewModel: viewModel.locationSheetViewModel)
@@ -32,7 +41,7 @@ struct NodeView: View {
             showSheet = true
         }
     }
-
+    
     var footerView: some View {
         TimelineView(.everyMinute) { _ in
             Text(viewModel.lastUpdatedFormatted)

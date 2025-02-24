@@ -11,6 +11,11 @@ import SwiftUI
 
 @MainActor
 class CollectionViewModel: ObservableObject {
+    enum SortParameter {
+        case capacity
+        case channels
+    }
+
     @Published var nodeViewModels: [NodeViewModel] = []
     @Published var sortParameter: SortParameter = .channels
     @Published var loadableViewState: LoadableViewState = .loaded
@@ -21,18 +26,32 @@ class CollectionViewModel: ObservableObject {
         self.loader = loader
     }
     
-    var capacityTextColor: Color {
+    var capacityHeaderText: String {
         if sortParameter == .capacity {
-            return Color.black
+            return "CAPACITY (BTC) ▼"
         }
-        return Color.gray
+        return "CAPACITY (BTC)"
     }
     
-    var channelsTextColor: Color {
+    var channelsHeaderText: String {
         if sortParameter == .channels {
-            return Color.black
+            return "CHANNELS ▼"
         }
-        return Color.gray
+        return "CHANNELS"
+    }
+    
+    var capacityHeaderColor: Color {
+        if sortParameter == .capacity {
+            return .black
+        }
+        return .gray
+    }
+    
+    var channelsHeaderColor: Color {
+        if sortParameter == .channels {
+            return .black
+        }
+        return .gray
     }
     
     /// Fetches Lightning nodes async with throttling, maps results to view models,
@@ -81,9 +100,4 @@ class CollectionViewModel: ObservableObject {
             loadableViewState = .error(.resourceNotFound)
         }
     }
-}
-
-enum SortParameter {
-    case capacity
-    case channels
 }

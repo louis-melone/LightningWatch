@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CollectionView: View {
     @ObservedObject var viewModel: CollectionViewModel
+    let listRowInsets = EdgeInsets.init(top: 10, leading: 0, bottom: 10, trailing: 10)
     
     var body: some View {
         mainView
@@ -16,47 +17,50 @@ struct CollectionView: View {
             await viewModel.fetchNodes()
         }
     }
-    
-    /// SwiftUI's Grid handles 100 elements efficiently with no noticeable lag.
-    /// https://developer.apple.com/documentation/swiftui/lazyvgrid
+
     var contentView: some View {
-        ScrollView {
-            Grid(alignment: .leadingLastTextBaseline) {
-                gridHeaderView
-                Divider()
-                forEachView
-            }
+        List {
+            gridHeaderView
+            forEachView
         }
         .padding()
         .refreshable {
             await viewModel.fetchNodes()
         }
+        .listStyle(.plain)
     }
     
     var gridHeaderView: some View {
-        GridRow {
-            Text("Node Alias / Last Updated")
-                .font(.subheadline)
+        HStack(spacing: 0) {
+            Text("#")
+                .font(.footnote)
                 .foregroundColor(.gray)
-            Text("Capacity (₿)")
-                .font(.subheadline)
-                .foregroundColor(viewModel.capacityTextColor)
+                .frame(minWidth: 25, alignment: .leading)
+            Text("ALIAS")
+                .font(.footnote)
+                .foregroundColor(.gray)
+            Spacer()
+            Text(viewModel.capacityHeaderText)
+                .font(.footnote)
+                .foregroundColor(viewModel.capacityHeaderColor)
                 .onTapGesture {
                     viewModel.sort(by: .capacity)
                 }
-            Text("# Channels")
-                .font(.subheadline)
-                .foregroundColor(viewModel.channelsTextColor)
+            Text(viewModel.channelsHeaderText)
+                .font(.footnote)
+                .foregroundColor(viewModel.channelsHeaderColor)
+                .frame(width: UIScreen.main.bounds.width / 4, alignment: .trailing)
                 .onTapGesture {
                     viewModel.sort(by: .channels)
                 }
         }
+        .listRowInsets(listRowInsets)
     }
     
     var forEachView: some View {
-        ForEach(viewModel.nodeViewModels) { nodeViewModel in
-            NodeView(viewModel: nodeViewModel)
-            Divider()
+        ForEach(Array(viewModel.nodeViewModels.enumerated()), id: \.element) { index, nodeViewModel in
+            NodeView(viewModel: nodeViewModel, rank: index + 1)
+                .listRowInsets(listRowInsets)
         }
     }
 }
@@ -70,3 +74,11 @@ extension CollectionView: LoadableView {
         viewModel.fetchNodes
     }
 }
+
+struct CollectionViewPreview: PreviewProvider {
+    static var previews: some View {
+        CollectionView(viewModel: CollectionViewModel(loader: MockLightningLoader(loaderError: nil)))
+    }
+}
+
+

@@ -23,7 +23,7 @@ struct LocationSheetViewModel {
     }
     
     var firstSeenFormatted: String {
-        formattedDate(from: firstSeen)
+        firstSeen.unixTimeToFormattedDate
     }
     
     var locationText: String {
@@ -46,11 +46,5 @@ struct LocationSheetViewModel {
     private var countryName: String? {
         guard let country else { return nil }
         return country.ptBR ?? country.en
-    }
-    
-    /// Converts Unix Time to formatted date ex. "Jan 1, 2025"
-    private func formattedDate(from unixTimestamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(unixTimestamp))
-        return date.formatted(date: .abbreviated, time: .omitted)
     }
 }
