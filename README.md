@@ -27,8 +27,8 @@ __UI / UX__
 - Grid-based list layout combined with a Sheet View for an intuitive and scannable UI.
     - Inspired by market leaders such as CoinGecko
 - Separated static data and dynamic data
-    - Static Data: country, city, pub key, first seen date as more info in a sheet
-    - Dynamic data: capacity, channels, last updated time displayed in grid
+    - Static Data: country, city, pub key, first-seen date are displayed as more info in a sheet
+    - Dynamic data: capacity, channels, last updated time are displayed in list
 - User-friendly date formatting 
     - Updated date is shown in relative format for better readability
     - First seen date is a historical reference 
