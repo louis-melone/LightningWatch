@@ -18,11 +18,11 @@ git clone https://github.com/louis-melone/LightningWatch
 cd LightningWatch
 ```
 
-Open ios/LightningWallet.xcodeproj. Once the project loads, select the scheme/target LightningWallet. Click Run.
+Open LightningWallet.xcodeproj. Once the project loads, select the scheme/target LightningWallet. Click Run.
 
 ## What areas of the app did you focus on?
 
-UI / UX
+__UI / UX__
 
 - Grid-based list layout combined with a Sheet View for an intuitive and scannable UI.
     - Inspired by market leaders such as CoinGecko
@@ -34,12 +34,13 @@ UI / UX
     - First seen date is a historical reference 
 - Sorting feature to help users quickly analyze nodes based on key parameters
 
-Arcitecture 
+__Arcitecture__ 
 
 - MVVM architecture to manage bussiness logic and increase testability 
 - Modularization with LoadableView and LightningLoader protocol
 - Resusable view components
-- `Identifiable` protocol (using public key as the identifier) to imporve UI responsiveness and performance. https://www.dhiwise.com/post/swift-identifiable-explained-how-to-use-it-in-your-swiftui
+- `Identifiable` protocol (using public key as the identifier) to imporve UI responsiveness and performance.
+https://www.dhiwise.com/post/swift-identifiable-explained-how-to-use-it-in-your-swiftui
 
 ## What was the reason for your focus? What problems were you trying to solve?
 
@@ -53,17 +54,19 @@ Arcitecture
 
 ## Did you make any trade-offs for this project? What would you have done differently with more time?
 
-Trade Offs
+__Trade Offs__
 
 - Portrait-mode only to avoid using a Geometry Reader to format the rows 
 
-Future Features 
+__Future Features__
 
 - ContentPolling feature to automatically update data. 
 - ThemeCoordinator to style the list better. 
 - Network monitor to listen to changes in connection status. 
 - Filter by city / country 
 - Statistics above the grid (total capacity)
+
+Most of these features were part of my initial vision for the app's expansion, and I designed the architecture with future scalability in mind.
 
 ## What do you think is the weakest part of your project?
 
