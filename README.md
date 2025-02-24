@@ -39,8 +39,7 @@ __Arcitecture__
 - MVVM architecture to manage bussiness logic and increase testability 
 - Modularization with LoadableView and LightningLoader protocol
 - Resusable view components
-- `Identifiable` protocol (using public key as the identifier) to imporve UI responsiveness and performance.
-https://www.dhiwise.com/post/swift-identifiable-explained-how-to-use-it-in-your-swiftui
+- `Identifiable` protocol (using public key as the identifier) to [improve UI responsiveness and performance](https://www.dhiwise.com/post/swift-identifiable-explained-how-to-use-it-in-your-swiftui)
 
 ## What was the reason for your focus? What problems were you trying to solve?
 
