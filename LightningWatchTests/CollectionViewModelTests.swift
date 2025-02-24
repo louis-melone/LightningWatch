@@ -7,8 +7,8 @@
 
 import Testing
 
+@MainActor
 struct CollectionViewModelTests {
-    @MainActor
     @Test func testSortByCapacity() {
         // Setup
         let nodes = [
@@ -22,13 +22,15 @@ struct CollectionViewModelTests {
         viewModel.nodeViewModels = nodeViewModels
         
         // Expect unselected color before sorting
-        #expect(viewModel.capacityTextColor == .gray)
+        #expect(viewModel.capacityHeaderColor == .gray)
+        #expect(viewModel.capacityHeaderText == "CAPACITY (BTC)")
         
         // Perform
         viewModel.sort(by: .capacity)
         
         // Expect selected color after sorting
-        #expect(viewModel.capacityTextColor == .black)
+        #expect(viewModel.capacityHeaderColor == .black)
+        #expect(viewModel.capacityHeaderText == "CAPACITY (BTC) ▼")
         
         // Expect nodes to be sorted by capactiy
         #expect(viewModel.nodeViewModels[0].node.capacity == 3)
@@ -36,7 +38,6 @@ struct CollectionViewModelTests {
         #expect(viewModel.nodeViewModels[2].node.capacity == 1)
     }
     
-    @MainActor
     @Test func testHandleErrorFull() async {
         // Setup
         let nodes = [
@@ -62,7 +63,6 @@ struct CollectionViewModelTests {
         #expect(expect)
     }
     
-    @MainActor
     @Test func testHandleErrorEmpty() async {
         // Setup
         let viewModel = CollectionViewModel(loader: MockLightningLoader())
