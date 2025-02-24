@@ -17,7 +17,6 @@ iOS App for monitoring the 100 most well-connected nodes in the Lightning Networ
 
 ```sh 
 git clone https://github.com/louis-melone/LightningWatch
-cd LightningWatch
 ```
 
 Open LightningWallet.xcodeproj. Once the project loads, select the scheme/target LightningWallet. Click Run.
@@ -67,4 +66,4 @@ __With More Times__
 
 ## What do you think is the weakest part of your project?
 
-Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy.
+Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy would address this.
