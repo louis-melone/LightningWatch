@@ -27,7 +27,7 @@ class NodeViewModel: ObservableObject, Identifiable {
     }
     
     var capacityBtc: String {
-        String(format: "%.3f", capactiy.satsToBtc)
+        String(format: "%.3f", node.capacity.satsToBtc)
     }
     
     var channels: String {
