@@ -8,17 +8,11 @@
 import SwiftUI
 
 struct NodeView: View {
-    let viewModel: NodeViewModel
-    let rank: Int
-    @State var showSheet = false
-    
+    @ObservedObject var viewModel: NodeViewModel
     
     var body: some View {
         HStack(spacing: 0) {
-            Text(String(rank))
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .frame(minWidth: 25, alignment: .leading)
+            rankView
             VStack(alignment: .leading) {
                 Text(viewModel.node.alias)
                     .font(.subheadline)
@@ -32,13 +26,23 @@ struct NodeView: View {
                 .font(.subheadline)
                 .frame(width: UIScreen.main.bounds.width / 4, alignment: .trailing)
         }
-        .sheet(isPresented: $showSheet) {
+        .sheet(isPresented: $viewModel.showSheet) {
             LocationSheetView(viewModel: viewModel.locationSheetViewModel)
                 .presentationDetents([.medium])
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            showSheet = true
+            viewModel.showSheet = true
+        }
+    }
+    
+    @ViewBuilder
+    var rankView: some View {
+        if let rank = viewModel.rank {
+            Text(String(rank))
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .frame(minWidth: 25, alignment: .leading)
         }
     }
     

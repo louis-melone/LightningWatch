@@ -58,8 +58,8 @@ struct CollectionView: View {
     }
     
     var forEachView: some View {
-        ForEach(Array(viewModel.nodeViewModels.enumerated()), id: \.element) { index, nodeViewModel in
-            NodeView(viewModel: nodeViewModel, rank: index + 1)
+        ForEach(viewModel.nodeViewModels) { nodeViewModel in
+            NodeView(viewModel: nodeViewModel)
                 .listRowInsets(listRowInsets)
         }
     }

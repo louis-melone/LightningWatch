@@ -84,6 +84,9 @@ class CollectionViewModel: ObservableObject {
         case .channels:
             nodeViewModels.sort(by: { $0.node.channels > $1.node.channels })
         }
+        for index in nodeViewModels.indices {
+            nodeViewModels[index].rank = index + 1
+        }
     }
     
     /// Handles loadable state given some error.

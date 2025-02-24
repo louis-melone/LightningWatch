@@ -5,12 +5,15 @@
 //  Created by Louis Melone on 2/19/25.
 //
 
+import Combine
 import Foundation
 
-struct NodeViewModel: Identifiable {
+class NodeViewModel: ObservableObject, Identifiable {
     let node: LightningNode
     let locationSheetViewModel: LocationSheetViewModel
     var id: String { node.id }
+    @Published var rank: Int?
+    @Published var showSheet = false
     
     init(node: LightningNode) {
         self.node = node
@@ -24,7 +27,7 @@ struct NodeViewModel: Identifiable {
     }
     
     var capacityBtc: String {
-        String(format: "%.3f", node.capacity.satsToBtc)
+        String(format: "%.3f", capactiy.satsToBtc)
     }
     
     var channels: String {
@@ -33,15 +36,5 @@ struct NodeViewModel: Identifiable {
 
     var lastUpdatedFormatted: String {
         node.updatedAt.unixTimeToTimeAgo
-    }
-}
-
-extension NodeViewModel: Hashable {
-    static func == (lhs: NodeViewModel, rhs: NodeViewModel) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
     }
 }
