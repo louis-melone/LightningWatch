@@ -7,9 +7,7 @@ App For Monitoring Active Lightning Network Nodes
 
 ## Build tools & versions used
 
-XCode Version 16.2
-
-- **Xcode:** 16.2 (Build 15C500b)
+- **Xcode:** 16.2
 - **Swift:** 6.0.3
 - **macOS:** 14.7.2 (Sonoma)
 
@@ -43,7 +41,6 @@ __Arcitecture__
 - MVVM architecture to manage bussiness logic and increase testability 
 - Modularization with LoadableView and LightningLoader protocol
 - Resusable view components
-- `Identifiable` protocol (using public key as the identifier) to [improve UI responsiveness and performance](https://www.dhiwise.com/post/swift-identifiable-explained-how-to-use-it-in-your-swiftui)
 
 ## What was the reason for your focus? What problems were you trying to solve?
 
@@ -69,8 +66,6 @@ __Future Features__
 - Filter by city / country 
 - Statistics above the grid (total capacity)
 
-Most of these features were part of my initial vision for the app's expansion, and I designed the architecture with future scalability in mind.
-
 ## What do you think is the weakest part of your project?
 
-Theme and constants management, as well as advanced error handling, are areas for improvement. Implementing a ThemeCoordinator and a more robust error-handling strategy would enhance maintainability and UX.
+Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy would enhance maintainability and UX.
