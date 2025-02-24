@@ -67,4 +67,4 @@ __With More Times__
 
 ## What do you think is the weakest part of your project?
 
-Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy.
+Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy would address this.
