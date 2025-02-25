@@ -21,7 +21,7 @@ git clone https://github.com/louis-melone/LightningWatch
 
 Open LightningWallet.xcodeproj. Once the project loads, select the scheme/target LightningWallet. Click Run.
 
-## What areas of the app did you focus on?
+## Focus Areas
 
 __UI / UX__
 
@@ -41,29 +41,27 @@ __Arcitecture__
 - Modularization with LoadableView and LightningLoader protocol
 - Resusable view components
 
-## What was the reason for your focus? What problems were you trying to solve?
+__Reasons for Focus Areas__
 
-- A clearly defined scope of the project given the timeframe 
+- A clearly defined scope of the project
 - Scale into a production-ready app with an expanding feature set and growing userbase 
 - Clean user experience with scalable and dynamic view components 
 
-## How long did you spend on this project?
+## Time Spent
 
 ~6 hours 
 
-## Did you make any trade-offs for this project? What would you have done differently with more time?
-
-__Trade Offs__
+## Tradeoffs
 
 - Portrait-mode only to avoid using a Geometry Reader to format the rows 
 
-__With More Times__
+## Future Features
 
 - ContentPolling feature to automatically update data. 
 - Network monitor to listen to changes in connection status. 
 - Filter by city / country 
 - Statistics above the grid (eg. total capacity)
 
-## What do you think is the weakest part of your project?
+## Weak Areas
 
 Theme and constants management, as well as advanced error handling. Implementing a ThemeCoordinator and a more robust error-handling strategy would address this.
